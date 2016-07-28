@@ -1,0 +1,16 @@
+<h1><%= @event.name %></h1>
+<p>When: <%= @event.date.strftime("%b %d, %Y | %l:%M %p") %></p>
+<p>Where: <%= @event.location %></p>
+<p>Description: <%= @event.description %></p>
+<p>Creator: <%= @event.creator.name %></p>
+
+<%= link_to "Attend this event", '#', class: "btn btn-success" unless @attendees.include? current_user%>
+
+<% if @attendees.count != 0 %>
+	<h2>Who is going</h2>
+	<% @attendees.each do |attendant| %>
+		<p><%= attendant.name %></p>
+	<% end %>
+<% else %>
+	<h2>No one is attending this event...</h2>
+<% end %>

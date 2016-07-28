@@ -1,0 +1,24 @@
+
+<h2>Hosted Events</h2>
+<%= render partial: 'shared/titles' if @events.any? %>
+<div class="panel-group" id="accordion1">
+	<% @events.each do |event| %>
+		<%= render partial: 'shared/accordion', locals: { event: event, parent: 'accordion1' } %>
+	<% end %>
+</div>
+
+<h2>Upcoming Events</h2>
+<%= render partial: 'shared/titles' if @attended_events_future.any? %>
+<div class="panel-group" id="accordion2">
+	<% @attended_events_future.each do |event| %>
+		<%= render partial: 'shared/accordion', locals: { event: event, parent: 'accordion2' } %>
+	<% end %>
+</div>
+
+<h2> Previously attended Events</h2>
+<%= render partial: 'shared/titles' if @attended_events_past.any? %>
+<div class="panel-group" id="accordion3">
+	<% @attended_events_past.each do |event| %>
+		<%= render partial: 'shared/accordion', locals: { event: event, parent: 'accordion3' } %>
+	<% end %>
+</div>
